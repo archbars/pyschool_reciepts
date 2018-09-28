@@ -30,10 +30,11 @@ def get_ingredients_from_string(receipt):
     list_ingredients = receipt[2:]
     list_local = []
     for i in range(int(receipt[1])):
-        list_local.append({'ingridient_name': list_ingredients[i].split(' | ')[0].lower(),
-                     'quantity': int(list_ingredients[i].split(' | ')[1].lower()),
-                     'measure': list_ingredients[i].split(' | ')[2].lower()})
-    dict_ingredients.update({receipt[0].lower(): list_local})
+        ingridients = list_ingredients[i].split(' | ')
+        list_local.append({'ingridient_name': ingridients[0].lower(),
+                     'quantity': int(ingridients[1].lower()),
+                     'measure': ingridients[2].lower()})
+    dict_ingredients[receipt[0].lower()] = list_local
     return dict_ingredients
 
 
